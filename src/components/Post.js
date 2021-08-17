@@ -1,11 +1,13 @@
-export default class Post {
+import Component from "./Component.js";
+
+export default class Post extends Component {
   constructor(post) {
+    super("post");
     this._post = post;
+    this.render();
   }
   render() {
-    return `<div class="post">
-            <div>${this._post.title}</div>
-            <div>${this._post.body}</div>
-        <div>`;
+    this.$element.innerHTML = `<div>${this._post.title}</div>
+      <div>${this._post.body}</div>`;
   }
 }
