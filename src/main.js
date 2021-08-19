@@ -1,14 +1,13 @@
 import Post from "./components/Post.js";
 import "./style.css";
 import axios from "axios";
+import config from "./config/config.js"
 
-const config = {
-  server: "http://localhost:3000/",
-};
+const app = document.querySelector('#app')
 
 axios.get(config.server + "posts").then((response) => {
   response.data.forEach((post) => {
-    document.body.appendChild(
+    app.appendChild(
       new Post({
         title: post.title,
         body: post.body,
