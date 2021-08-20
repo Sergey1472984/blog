@@ -7,15 +7,21 @@ export default class PostsList extends Component {
         super(className);
         this.posts = posts;
         this.render();
+
     }
 
     handlerSortByTitle() {
-        console.log("add-sort-function")
+        this.posts.sort((a, b) => a.title > b.title ? 1 : -1);
+        this.clear()
+        this.render()
+    }
+
+    clear() {
+        this.$element.innerHTML = ''
     }
 
     render() {
-        const $buttonTitleElement = new Button(this.handlerSortByTitle, "По названию").$element;
-
+        const $buttonTitleElement = new Button(this.handlerSortByTitle.bind(this), "По названию").$element;
         this.$element.appendChild($buttonTitleElement);
 
         this.posts.forEach((post) => {
